@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cs.mapper.BookMapper">
+
+    <!--添加书籍信息-->
+    <insert id="addBook" parameterType="book">
+        insert into book
+        (book_name,book_author,book_publisher)
+        value
+        (#{book_Name},#{book_Author},#{book_Publisher})
+    </insert>
+
+    <!--删除一本书籍信息-->
+    <delete id="delBook" parameterType="int">
+        delete from book where book_ID =#{book_ID}
+    </delete>
+
+    <!--修改书籍信息-->
+    <update id="updateBook" parameterType="book">
+        update book
+        set book_name = #{book_Name},book_author = #{book_Author},book_publisher = #{book_Publisher}
+        where book_id = #{book_ID}
+    </update>
+
+
+    <!--查询所有书籍信息-->
+    <select id="findAllBooks" resultType="book">
+        select * from book where lendable = 1 order by book_ID asc
+    </select>
+
+    <!--根据id查询图书-->
+    <select id="findByID" resultType="book">
+        select * from book where book_id = #{book_ID}
+    </select>
+
+
+
+    <!--查询可借图书数量-->
+    <select id="findBookCount" resultType="int">
+        select count(*) from book where lendable = 1
+    </select>
+
+    <!--根据书名查询可借图书数量-->
+    <select id="findCountByBook_Name" parameterType="String" resultType="int">
+        select count(*) from book
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="_parameter != null">
+                and book_name like concat ('%',#{book_Name},'%')
+            </if>
+            and lendable = 1
+        </trim>
+
+    </select>
+
+    <!--根据书名模糊查询可借图书-->
+    <select id="findByBookName" parameterType="String" resultType="book">
+        select * from book
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="_parameter != null ">
+                and book_name like concat ('%',#{book_Name},'%')
+            </if>
+            and lendable = 1 order by book_ID asc
+        </trim>
+
+    </select>
+
+
+
+    <!--查询可借书籍信息-->
+    <select id="findLendableBooks" resultType="book">
+        select * from book where lendable = 1 order by book_ID asc
+    </select>
+
+
+</mapper>
