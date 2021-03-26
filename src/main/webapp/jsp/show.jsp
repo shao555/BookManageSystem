@@ -102,7 +102,6 @@
     </c:forEach>
 
 </table>
-
 <ul class="pagination">
     <li><a href="${pageContext.request.contextPath}/show?page=1">首页</a></li>
     <li <c:if test="${pageInfo.pageNum==1}">class="disabled"</c:if>><a
