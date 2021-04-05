@@ -2,9 +2,9 @@
 $(document).ready(function () {
 
     // var path = $("#path").val();
-    $("table").attr("bgColor", "#FFFFFF"); //设置表格的背景颜色
-    $("tr").attr("bgColor", "#B6B6B6"); //为单数行表格设置背景颜色
-    $("tr:even").css("background-color", "#9A9A9A"); //为双数行表格设置背颜色素
+    // $("table").attr("bgColor", "#FFFFFF"); //设置表格的背景颜色
+    // $("tr").attr("bgColor", "#B6B6B6"); //为单数行表格设置背景颜色
+    // $("tr:even").css("background-color", "#9A9A9A"); //为双数行表格设置背颜色素
 
 
     // $(".querys").click(function () {

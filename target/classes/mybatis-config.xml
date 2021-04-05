@@ -10,6 +10,7 @@
     <!--引入映射文件-->
     <mappers>
         <mapper resource="mapper/BookMapper.xml"/>
+        <mapper resource="mapper/AdminMapper.xml"/>
     </mappers>
 
 

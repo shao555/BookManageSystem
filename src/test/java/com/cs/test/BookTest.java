@@ -26,8 +26,9 @@ public class BookTest {
 	
 	
 //		delBook(12);
-		addBook();
+//		addBook();
 //		updateBook();
+		lendBook();
 	}
 	
 	//添加书籍信息
@@ -56,6 +57,18 @@ public class BookTest {
 			System.out.println("删除成功");
 		} else {
 			System.out.println("删除失败");
+		}
+	}
+	
+	//借阅图书
+	public static void lendBook() throws Exception{
+		ApplicationContext act = new ClassPathXmlApplicationContext("applicationContext.xml");
+		BookService bs = (BookService) act.getBean("service");
+		int i = bs.lendBook(1);
+		if (i >0) {
+			System.out.println("借阅成功");
+		} else {
+			System.out.println("借阅失败");
 		}
 	}
 	
@@ -153,7 +166,7 @@ public class BookTest {
 		System.out.println("是否有上一页="+page.isHasPreviousPage());
 		System.out.println("是否有下一页="+page.isHasNextPage());
 		System.out.println("当前页数据=");
-		for (Book b : list) {
+		for (Book b : page.getList()) {
 			System.out.println(b);
 		}
 		

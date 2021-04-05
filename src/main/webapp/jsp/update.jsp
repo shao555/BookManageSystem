@@ -14,10 +14,27 @@
     <title>修改</title>
     <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/update.js"></script>
+
+    <script type="text/javascript">
+
+        function ba() {
+            history.back();
+            // history.back();location.reload()
+            // window.location.href="show.jsp"+window.location.href
+            // window.history.back(-1);
+            // location.href = "/book/index"
+            // window.location.href="/book/addBook";
+            // window.location.href="/book/main";
+
+        }
+
+
+    </script>
+
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}/update.do" method="get" id="mytab">
+<form action="${pageContext.request.contextPath}/bookc/update.do" method="get" id="mytab">
     <table width="600" align="center" border="1px">
         <tr>
             <td align="center" colspan="2"><h1>修改图书信息</h1></td>
@@ -28,17 +45,7 @@
                 <input type="hidden" name="book_ID" value="${b.book_ID}">
             </td>
         </tr>
-        <%--        <tr>--%>
-        <%--            <td>新闻分类</td>--%>
-        <%--            <td>--%>
-        <%--                <select name="select" id="select">--%>
-        <%--                    <option value="0">全部</option>--%>
-        <%--                    <option value="1">军事</option>--%>
-        <%--                    <option value="2">国际</option>--%>
-        <%--                    <option value="3">国内</option>--%>
-        <%--                </select>--%>
-        <%--            </td>--%>
-        <%--        </tr>--%>
+
         <tr>
             <td>书名</td>
             <td>
@@ -60,7 +67,7 @@
         <tr>
             <td align="center" colspan="2">
                 <input align="center" type="submit" value="提交">
-                <input align="center" type="button" value="返回" onclick="ba()">
+                <input align="center" type="button" value="取消" onclick="ba()">
             </td>
         </tr>
     </table>

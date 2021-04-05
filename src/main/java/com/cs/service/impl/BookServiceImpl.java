@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @Component
-@Service("service")
+@Service("bservice")
 public class BookServiceImpl implements BookService {
 	
 	@Resource
@@ -73,6 +73,12 @@ public class BookServiceImpl implements BookService {
 //		return null;
 	}
 	
+	@Override
+	public List<Book> findByLendedBName(String book_Name) throws Exception {
+		return bookMapper.findByLendedBName(book_Name);
+//		return null;
+	}
+	
 	//根据书名查询可借图书数量
 	@Override
 	public int findCountByBook_Name(String book_Name) throws Exception {
@@ -91,6 +97,26 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> findLendableBooks() throws Exception {
 		return bookMapper.findLendableBooks();
+//		return null;
+	}
+
+	//查询已借图书
+	@Override
+	public int lendBook(int book_ID) throws Exception {
+		return bookMapper.lendBook(book_ID);
+//		return 0;
+	}
+	
+	//归还图书
+	@Override
+	public int returnBook(int book_ID) throws Exception {
+		return bookMapper.returnBook(book_ID);
+//		return 0;
+	}
+	
+	@Override
+	public List<Book> findLendedBooks() throws Exception {
+		return bookMapper.findLendedBooks();
 //		return null;
 	}
 	

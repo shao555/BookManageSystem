@@ -12,12 +12,37 @@
 <html>
 <head>
     <title>查看</title>
-    <script src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/update.js"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+<%--    <script type="text/javascript" src="${pageContext.request.contextPath}/js/update.js"></script>--%>
+
+    <script type="text/javascript">
+
+        function ba() {
+            history.back();
+        }
+        function delBook(bookID) {
+            var flag = confirm("确定要删除这本图书吗?")
+            if (flag == true) {
+                location.href = "/book/bookc/delBook.do?book_ID=" + bookID;
+            }
+        }
+        function lendBook(bookID) {
+            var flag = confirm("确定借阅?")
+            if (flag == true) {
+                alert("借阅成功")
+                location.href = "/book/bookc/lendBook.do?book_ID=" + bookID;
+            }
+        }
+
+
+    </script>
+
 </head>
 
 <body>
-<form action="${pageContext.request.contextPath}/update.do" method="get" id="mytab">
+<form action="${pageContext.request.contextPath}/bookc/update.do" method="get" id="mytab">
     <table width="600" align="center" border="1px">
         <tr>
             <td align="center" colspan="2"><h1>图书信息</h1></td>
@@ -50,9 +75,20 @@
             </td>
         </tr>
         <tr>
+
+
+
+
             <td align="center" colspan="2">
 <%--                <input align="center" type="submit" value="提交">--%>
+
+    <a href="${pageContext.request.contextPath}/bookc/update?book_ID=${b.book_ID}"><input type="button"
+                                                                                    value="修改"></a>
+<%--    <a href="${pageContext.request.contextPath}/check?book_ID=${b.book_ID}"><input type="button"--%>
+<%--                                                                                   value="借阅"></a>--%>
+    <input type="button" value="借阅" id="book_ID" onclick="lendBook(${b.book_ID})">
                 <input align="center" type="button" value="返回" onclick="ba()">
+    <input type="button"  class="btn btn-danger" value="删除" id="book_ID" onclick="delBook(${b.book_ID})">
             </td>
         </tr>
     </table>

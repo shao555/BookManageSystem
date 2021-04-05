@@ -14,9 +14,6 @@ $(document).ready(function () {
     });
 });
 
-function ba() {
-    history.back();
-}
 
 
 function checkAuthor () {

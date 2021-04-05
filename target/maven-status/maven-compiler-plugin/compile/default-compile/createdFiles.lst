@@ -1,5 +1,2 @@
-com\cs\mapper\BookMapper.class
-com\cs\entity\Book.class
-com\cs\service\impl\BookServiceImpl.class
-com\cs\controller\BookController.class
-com\cs\service\BookService.class
+com\cs\entity\Admin.class
+com\cs\controller\AdminController.class

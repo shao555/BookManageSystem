@@ -36,7 +36,6 @@
     </select>
 
 
-
     <!--查询可借图书数量-->
     <select id="findBookCount" resultType="int">
         select count(*) from book where lendable = 1
@@ -63,14 +62,43 @@
             </if>
             and lendable = 1 order by book_ID asc
         </trim>
-
     </select>
 
-
+    <!--根据书名模糊查询已借图书-->
+    <select id="findByLendedBName" parameterType="String" resultType="book">
+        select * from book
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="_parameter != null ">
+                and book_name like concat ('%',#{book_Name},'%')
+            </if>
+            and lendable = 0 order by book_ID asc
+        </trim>
+    </select>
 
     <!--查询可借书籍信息-->
     <select id="findLendableBooks" resultType="book">
         select * from book where lendable = 1 order by book_ID asc
+    </select>
+
+    <!--借阅图书-->
+    <update id="lendBook" parameterType="int">
+        update book
+        set  lendable = 0
+        where book_id = #{book_ID}
+    </update>
+
+
+    <!--归还图书-->
+    <update id="returnBook" parameterType="int">
+        update book
+        set  lendable = 1
+        where book_id = #{book_ID}
+    </update>
+
+
+    <!--查询已借图书-->
+    <select id="findLendedBooks" resultType="book">
+        select * from book where lendable = 0 order by book_ID asc
     </select>
 
 

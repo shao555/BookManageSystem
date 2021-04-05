@@ -34,6 +34,9 @@ public interface BookService {
 	//根据书名模糊查询可借图书
 	public List<Book> findByBookName(@Param("book_Name") String book_Name) throws Exception;
 	
+	//根据书名模糊查询可借图书
+	public List<Book> findByLendedBName(@Param("book_Name") String book_Name) throws Exception;
+	
 	//根据书名查询可借图书数量
 	public int findCountByBook_Name(String book_Name) throws Exception;
 	
@@ -42,5 +45,14 @@ public interface BookService {
 	
 	//分页查询可借图书信息
 	public List<Book> findLendableBooks() throws Exception;
+	
+	//借阅图书
+	public int lendBook(int book_ID) throws Exception;
+	
+	//归还图书
+	public int returnBook(int book_ID) throws Exception;
+	
+	//查询已借图书信息
+	public List<Book> findLendedBooks() throws Exception;
 	
 }
